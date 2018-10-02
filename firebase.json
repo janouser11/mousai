@@ -3,13 +3,12 @@
     "rules": "firestore.rules",
     "indexes": "firestore.indexes.json"
   },
+  "functions": {
+    "ignore": ["/functions/lib/config.js"]
+  },
   "hosting": {
     "public": "build",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**", "../config.js"],
     "rewrites": [
       {
         "source": "**",
