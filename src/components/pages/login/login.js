@@ -9,9 +9,6 @@ const login_url = `https://accounts.spotify.com/authorize/?client_id=${client_id
 
 class Home extends React.Component {
   render() {
-    console.log(callBackUrl);
-    console.log(client_id);
-    console.log(response_type);
     return (
       <div className="login-page">
         <div>
@@ -25,9 +22,29 @@ class Home extends React.Component {
           <p className="sub-title">Login to your Spotify account to continue</p>
 
           <div className="login-button-container">
-            <a className="login-button" href={login_url}>
+            <a
+              className="login-button"
+              href={login_url}
+              // onClick={() =>
+              //   alert("Login disabled while features are being added!")
+              // }
+            >
               Login
             </a>
+          </div>
+          <div className="info-summary">
+            <h3 className="development">Currently In Development </h3>
+            <p>
+              Mousai's end goal is to be a web/mobile application that gives
+              users the flexibility and ability to collaborate easily on Spotify
+              playlists.
+              <h3>Phase 1 features include:</h3>
+              <ul>
+                <li>Upvote/downvote system for each song in a playlist</li>
+                <li>Play songs in browser (Spotify Premium Only)</li>
+                <li>Control songs on other devices</li>
+              </ul>
+            </p>
           </div>
         </div>
       </div>
