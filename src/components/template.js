@@ -6,4 +6,4 @@ class Template extends React.Component {
   }
 }
 
-export default CallTemplateack;
+export default Template;

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 class Home extends React.Component {
   state = {
@@ -34,13 +35,11 @@ class Home extends React.Component {
     for (var i = 0; i < arrayLength; i++) {
       let item = playlists[i];
       console.log(playlists[i]);
-      items.push(<p>{item.name}</p>);
-    }
-    if (playlists && playlists.length > 0) {
-      let test = playlists.map(x => {
-        console.log("logging");
-        console.log(x);
-      });
+      items.push(
+        <p key={item.id}>
+          <Link to={`/playlist/${item.id}`}> {item.name}</Link>
+        </p>
+      );
     }
 
     return items;
