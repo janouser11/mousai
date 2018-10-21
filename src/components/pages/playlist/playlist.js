@@ -19,9 +19,36 @@ class Playlist extends React.Component {
     this.setState({ songs: json.items });
   }
 
+  async songClick(song) {
+    console.log("songClicked");
+    const spotifyBaseUrl = "https://api.spotify.com/v1/";
+    const spotifyEndpoint = `me/player/play`;
+    const body = {
+      context_uri: song.track.album.uri,
+      offset: {
+        position: 5
+      },
+      position_ms: 0
+    };
+    const response = await fetch(`${spotifyBaseUrl}${spotifyEndpoint}`, {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${getCookie("access_token")}`
+      },
+      body: JSON.stringify(body)
+    });
+  }
+
   renderSongs = songList => {
     return songList.map(song => {
-      return <div key={song.track.id + song.added_at}>{song.track.name}</div>;
+      return (
+        <div
+          key={song.track.id + song.added_at}
+          onClick={() => this.songClick(song)}
+        >
+          {song.track.name}
+        </div>
+      );
     });
   };
 

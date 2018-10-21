@@ -5,7 +5,11 @@ import "./login.css";
 const callBackUrl = process.env.REACT_APP_CALLBACK_URL;
 const client_id = process.env.REACT_APP_CLIENT_ID;
 const response_type = process.env.REACT_APP_RESPONSE_TYPE;
-const login_url = `https://accounts.spotify.com/authorize/?client_id=${client_id}&response_type=${response_type}&redirect_uri=${callBackUrl}&scope=user-read-private%20user-read-email&state=34fFs29kd09`;
+const scopes =
+  "user-read-private user-read-email streaming user-read-birthdate";
+const login_url = `https://accounts.spotify.com/authorize/?client_id=${client_id}&response_type=${response_type}&redirect_uri=${callBackUrl}&scope=${encodeURIComponent(
+  scopes
+)}&state=34fFs29kd09`;
 
 class Home extends React.Component {
   render() {
