@@ -22,7 +22,9 @@ class Playlist extends React.Component {
   async songClick(song) {
     console.log("songClicked");
     const spotifyBaseUrl = "https://api.spotify.com/v1/";
-    const spotifyEndpoint = `me/player/play`;
+    const spotifyEndpoint = `me/player/play?device_id=${getCookie(
+      "device_id"
+    )}`;
     const body = {
       context_uri: song.track.album.uri,
       offset: {
@@ -30,13 +32,18 @@ class Playlist extends React.Component {
       },
       position_ms: 0
     };
-    const response = await fetch(`${spotifyBaseUrl}${spotifyEndpoint}`, {
+    const play = await fetch(`${spotifyBaseUrl}${spotifyEndpoint}`, {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${getCookie("access_token")}`
       },
       body: JSON.stringify(body)
     });
+
+    // play({
+    //   playerInstance: new Spotify.Player({ name: "Mousai" }),
+    //   spotify_uri: song.track.album.uri
+    // });
   }
 
   renderSongs = songList => {
