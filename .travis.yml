@@ -9,7 +9,7 @@ script:
 deploy:
   provider: firebase
   skip_cleanup: true
-  github_token: $FIREBASE_TOKEN
+  github_token: FIREBASE_TOKEN
   local_dir: build
   on:
     branch: master
