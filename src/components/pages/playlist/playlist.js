@@ -26,11 +26,7 @@ class Playlist extends React.Component {
       "device_id"
     )}`;
     const body = {
-      context_uri: song.track.album.uri,
-      offset: {
-        position: 5
-      },
-      position_ms: 0
+      uris: [`spotify:track:${song.track.id}`]
     };
     const play = await fetch(`${spotifyBaseUrl}${spotifyEndpoint}`, {
       method: "PUT",
@@ -40,13 +36,13 @@ class Playlist extends React.Component {
       body: JSON.stringify(body)
     });
 
-    // play({
-    //   playerInstance: new Spotify.Player({ name: "Mousai" }),
-    //   spotify_uri: song.track.album.uri
-    // });
+    // const json = await play.json();
+
+    // console.log(json);
   }
 
   renderSongs = songList => {
+    if (!songList) return;
     return songList.map(song => {
       return (
         <div
